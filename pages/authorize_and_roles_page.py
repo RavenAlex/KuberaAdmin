@@ -1,6 +1,12 @@
+import random
 import time
 
-from locators.auth_and_roles_locators import AuthAndRolePageLocators, TransactionSearchLocators
+
+from selenium.webdriver import Keys
+
+from generator.generator import generated_sort_product
+from locators.auth_and_roles_locators import AuthAndRolePageLocators, TransactionSearchLocators, \
+    TestSecurityManagerPageLocators
 from pages.base_page import BasePage
 
 
@@ -44,3 +50,29 @@ class TransactionSearchPage(BasePage):
         amount = self.element_is_visible(self.locators.AMOUNT).text
         data1 = [payment_id, recipient, transport, amount]
         return str(data1)
+
+
+class TestSecurityManagerPage(BasePage):
+    locators = TestSecurityManagerPageLocators()
+
+    def auth_superadmin_int(self):
+        self.element_is_visible(self.locators.USER_NAME).send_keys('agureev')
+        self.element_is_visible(self.locators.PASSWORD).send_keys('Clarus007')
+        self.element_is_visible(self.locators.TWOFACTORAUTH).send_keys('123456')
+        self.element_is_visible(self.locators.LOGIN_BUTTON).click()
+        time.sleep(1)
+
+    def sort_security_manager(self):
+        self.element_is_visible(self.locators.TRANSACTION_TAB).click()
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        count_before = self.element_is_visible(self.locators.TOTAL_COUNT).text
+        sort_product_id = self.element_is_visible(self.locators.PRODUCT_SORT)
+        sort_product_id.click()
+        sort_one = random.sample(next(generated_sort_product()).product_name, k=1)
+        sort_one_input = self.element_is_visible(self.locators.PRODUCT_SORT_FIELD)
+        sort_one_input.send_keys(sort_one)
+        sort_one_input.send_keys(Keys.ENTER)
+        time.sleep(1)
+        count_after = self.element_is_visible(self.locators.TOTAL_COUNT).text
+        return count_before, count_after
+

@@ -1,5 +1,5 @@
 import time
-from pages.authorize_and_roles_page import AuthAndRolePage, TransactionSearchPage
+from pages.authorize_and_roles_page import AuthAndRolePage, TransactionSearchPage, TestSecurityManagerPage
 
 
 class TestForm:
@@ -27,4 +27,14 @@ class TestForm:
                                                             'value incorrect display in table or search does not work'
             assert transaction_result == transaction_attachment, 'Transaction attachment has not been opened ' \
                                                                  'or value bot correct'
+
+    class TestSecurityManager:
+
+        def test_security_search(self, driver):
+            test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            count_before, count_after = test_authorization_form.sort_security_manager()
+            assert count_before != count_after, 'Sort has not been worked'
+
 

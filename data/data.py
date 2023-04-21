@@ -35,3 +35,7 @@ class Value:
 @dataclass
 class Select:
     select_one_name: str = None
+
+@dataclass
+class Product:
+    product_name: list = None
