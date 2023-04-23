@@ -106,4 +106,30 @@ class TestSecurityManagerPage(BasePage):
         date_after = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
         return date_before, date_after
 
+    def approve_security_manager(self):
+        self.element_is_visible(self.locators.TRANSACTION_TAB).click()
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        date_before = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
+        self.element_is_visible(self.locators.SECURITY_TRANSACTION).click()
+        time.sleep(2)
+        approve_button = self.element_is_visible(self.locators.APPROVE_BUTTON)
+        self.go_to_element(approve_button)
+        approve_button.click()
+        time.sleep(2)
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        date_after = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
+        return date_before, date_after
 
+    def single_approve_security_manager(self):
+        self.element_is_visible(self.locators.TRANSACTION_TAB).click()
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        date_before = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
+        self.element_is_visible(self.locators.SECURITY_TRANSACTION).click()
+        time.sleep(2)
+        single_approve_button = self.element_is_visible(self.locators.SINGLE_APPROVE_BUTTON)
+        self.go_to_element(single_approve_button)
+        single_approve_button.click()
+        time.sleep(2)
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        date_after = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
+        return date_before, date_after

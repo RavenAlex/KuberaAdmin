@@ -66,3 +66,7 @@ class TestSecurityManagerPageLocators:
     REJECT_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__secondary__26O0b '
                                       'Button__medium__2904Q PaymentResolutionControls__button__3TFOT theme-light"]')
     REJECT_REASON = (By.CSS_SELECTOR, 'textarea[class="theme-light TextArea__input__1ZnS6 FieldText__textarea__3P20h"]')
+    APPROVE_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__primary__3QLI9 '
+                                       'Button__medium__2904Q PaymentResolutionControls__button__3TFOT theme-light"]')
+    SINGLE_APPROVE_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__secondary__26O0b '
+                                              'Button__medium__2904Q theme-light"]')

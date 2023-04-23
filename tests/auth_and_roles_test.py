@@ -44,7 +44,7 @@ class TestForm:
             count_before, count_after = test_authorization_form.sort_security_manager_type()
             assert count_before != count_after, 'Sort type has not been worked'
 
-        def test_security_sort_type(self, driver):
+        def test_security_reject(self, driver):
             test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
             test_authorization_form.open()
             test_authorization_form.auth_superadmin_int()
@@ -52,5 +52,19 @@ class TestForm:
             return date_before, date_after
             assert date_before != date_after, 'Reject button has not been worked or table has not been updated'
 
+        def test_security_approve(self, driver):
+            test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            date_before, date_after = test_authorization_form.approve_security_manager()
+            return date_before, date_after
+            assert date_before != date_after, 'Approve button has not been worked or table has not been updated'
 
+        def test_security_single_approve(self, driver):
+            test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            date_before, date_after = test_authorization_form.single_approve_security_manager()
+            return date_before, date_after
+            assert date_before != date_after, 'Single approve button has not been worked or table has not been updated'
 
