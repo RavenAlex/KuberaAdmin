@@ -57,6 +57,12 @@ class TestSecurityManagerPageLocators:
     PRODUCT_SORT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[1]/div[2]/div/div[1]/div[1]')
     PRODUCT_SORT_FIELD = (By.CSS_SELECTOR, 'input[id="react-select-5-input"]')
     TOTAL_COUNT = (By.CSS_SELECTOR, 'div[class="Text__primary__9os-D BBTable__totalCount__3y6A1 theme-light"]')
-    TRANSACTION_SORT = (By.CSS_SELECTOR, 'input[id="react-select-6-input"]')
-
-
+    TYPE_SORT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[2]/div[2]/div/div[1]/div[1]')
+    TYPE_SORT_FIELD = (By.CSS_SELECTOR, 'input[id="react-select-6-input"]')
+    SECURITY_TRANSACTION = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr['
+                                             '4]/td[1]')
+    DATE_PICKER_IN_LIST = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[4]/td['
+                                     '7]/div/a/div')
+    REJECT_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__secondary__26O0b '
+                                      'Button__medium__2904Q PaymentResolutionControls__button__3TFOT theme-light"]')
+    REJECT_REASON = (By.CSS_SELECTOR, 'textarea[class="theme-light TextArea__input__1ZnS6 FieldText__textarea__3P20h"]')

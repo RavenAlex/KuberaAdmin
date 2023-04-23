@@ -1,6 +1,6 @@
 import random
 
-from data.data import Person, Color, Date, Value, Select, Product
+from data.data import Person, Color, Date, Value, Select, Product, Type
 from faker import Faker
 
 faker_ru = Faker('ru_RU')
@@ -12,4 +12,13 @@ def generated_sort_product():
     yield Product(
         product_name=["CHANNELS", "ТТММ", "EXSCUDO"]
     )
+
+
+def generated_sort_type():
+    yield Type(
+        type_name=["INVOICE_PAYMENT", "DEPOSIT", "WITHDRAWAL", "TRANSFER", "REFUND", "REGISTRATION_OF_COLOR_COIN",
+                   "REGISTRATION_OF_EON_ID", "CURRENCY_EXCHANGE", "VOTE", "COMPLEX"]
+    )
+
+
 

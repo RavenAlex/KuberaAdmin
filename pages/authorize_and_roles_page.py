@@ -4,7 +4,7 @@ import time
 
 from selenium.webdriver import Keys
 
-from generator.generator import generated_sort_product
+from generator.generator import generated_sort_product, generated_sort_type
 from locators.auth_and_roles_locators import AuthAndRolePageLocators, TransactionSearchLocators, \
     TestSecurityManagerPageLocators
 from pages.base_page import BasePage
@@ -62,7 +62,7 @@ class TestSecurityManagerPage(BasePage):
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
         time.sleep(1)
 
-    def sort_security_manager(self):
+    def sort_security_manager_product(self):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.SECURITY_MANAGER).click()
         count_before = self.element_is_visible(self.locators.TOTAL_COUNT).text
@@ -75,4 +75,35 @@ class TestSecurityManagerPage(BasePage):
         time.sleep(1)
         count_after = self.element_is_visible(self.locators.TOTAL_COUNT).text
         return count_before, count_after
+
+    def sort_security_manager_type(self):
+        self.element_is_visible(self.locators.TRANSACTION_TAB).click()
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        count_before = self.element_is_visible(self.locators.TOTAL_COUNT).text
+        sort_type = self.element_is_visible(self.locators.TYPE_SORT)
+        sort_type.click()
+        type_one = random.sample(next(generated_sort_type()).type_name, k=1)
+        sort_one_input = self.element_is_visible(self.locators.TYPE_SORT_FIELD)
+        sort_one_input.send_keys(type_one)
+        sort_one_input.send_keys(Keys.ENTER)
+        time.sleep(1)
+        count_after = self.element_is_visible(self.locators.TOTAL_COUNT).text
+        return count_before, count_after
+
+    def reject_security_manager(self):
+        self.element_is_visible(self.locators.TRANSACTION_TAB).click()
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        date_before = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
+        self.element_is_visible(self.locators.SECURITY_TRANSACTION).click()
+        time.sleep(2)
+        reject_reason = self.element_is_visible(self.locators.REJECT_REASON)
+        self.go_to_element(reject_reason)
+        reject_reason.send_keys('test')
+        reject = self.element_is_visible(self.locators.REJECT_BUTTON)
+        reject.click()
+        time.sleep(2)
+        self.element_is_visible(self.locators.SECURITY_MANAGER).click()
+        date_after = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
+        return date_before, date_after
+
 

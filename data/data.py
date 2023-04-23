@@ -39,3 +39,8 @@ class Select:
 @dataclass
 class Product:
     product_name: list = None
+
+
+@dataclass
+class Type:
+    type_name: list = None

@@ -30,11 +30,27 @@ class TestForm:
 
     class TestSecurityManager:
 
-        def test_security_search(self, driver):
+        def test_security_sort_product(self, driver):
             test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
             test_authorization_form.open()
             test_authorization_form.auth_superadmin_int()
-            count_before, count_after = test_authorization_form.sort_security_manager()
-            assert count_before != count_after, 'Sort has not been worked'
+            count_before, count_after = test_authorization_form.sort_security_manager_product()
+            assert count_before != count_after, 'Sort product has not been worked'
+
+        def test_security_sort_type(self, driver):
+            test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            count_before, count_after = test_authorization_form.sort_security_manager_type()
+            assert count_before != count_after, 'Sort type has not been worked'
+
+        def test_security_sort_type(self, driver):
+            test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            date_before, date_after = test_authorization_form.reject_security_manager()
+            return date_before, date_after
+            assert date_before != date_after, 'Reject button has not been worked or table has not been updated'
+
 
 
