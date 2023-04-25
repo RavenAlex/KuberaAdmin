@@ -1,12 +1,13 @@
 import random
 import time
-
+import keyboard
 
 from selenium.webdriver import Keys
+from selenium.common import TimeoutException
 
 from generator.generator import generated_sort_product, generated_sort_type
 from locators.auth_and_roles_locators import AuthAndRolePageLocators, TransactionSearchLocators, \
-    TestSecurityManagerPageLocators
+    TestSecurityManagerPageLocators, TestActivePaymentsPageLocators, TestRefundPaymentsPageLocators
 from pages.base_page import BasePage
 
 
@@ -133,3 +134,76 @@ class TestSecurityManagerPage(BasePage):
         self.element_is_visible(self.locators.SECURITY_MANAGER).click()
         date_after = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
         return date_before, date_after
+
+class TestActivePaymentsPage(BasePage):
+    locators = TestActivePaymentsPageLocators()
+
+    def auth_superadmin_int(self):
+        self.element_is_visible(self.locators.USER_NAME).send_keys('agureev')
+        self.element_is_visible(self.locators.PASSWORD).send_keys('Clarus007')
+        self.element_is_visible(self.locators.TWOFACTORAUTH).send_keys('123456')
+        self.element_is_visible(self.locators.LOGIN_BUTTON).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.TRANSACTION_TAB).click()
+        self.element_is_visible(self.locators.ACTIVE_PAYMENTS).click()
+
+    def sort_active_payments(self):
+        count_before = self.element_is_visible(self.locators.ACTIVE_COUNT).text
+        self.element_is_present(self.locators.ACTIVE_PAYMENTS_SORT).click()
+        select_before = random.randint(1, 3)
+        while select_before != 0:
+            keyboard.send('DOWN')
+            select_before -= 1
+        keyboard.send('ENTER')
+        count_after = self.element_is_visible(self.locators.ACTIVE_COUNT).text
+        return count_before, count_after
+
+    # def test_terminate_button(self):
+    #     self.element_is_present(self.locators.ACTIVE_PAYMENTS_SORT).click()
+    #     keyboard.send('DOWN')
+    #     keyboard.send('ENTER')
+    #     date_before = self.element_is_visible(self.locators.TIME_ACTIVE_TRANSACTION).text
+    #     self.element_is_visible(self.locators.ACTIVE_TRANSACTION).click()
+    #     self.element_is_visible(self.locators.TERMINATE_BUTTON).click()
+    #     self.element_is_visible(self.locators.TERMINATE_RETURN).click()
+    #     self.element_is_present(self.locators.ACTIVE_PAYMENTS_SORT).click()
+    #     keyboard.send('DOWN')
+    #     keyboard.send('ENTER')
+    #     date_after = self.element_is_visible(self.locators.TIME_ACTIVE_TRANSACTION).text
+    #     return date_before,
+    #     pass
+
+
+class TestRefundPaymentsPage(BasePage):
+    locators = TestRefundPaymentsPageLocators()
+
+
+    def auth_superadmin_int(self):
+        self.element_is_visible(self.locators.USER_NAME).send_keys('agureev')
+        self.element_is_visible(self.locators.PASSWORD).send_keys('Clarus007')
+        self.element_is_visible(self.locators.TWOFACTORAUTH).send_keys('123456')
+        self.element_is_visible(self.locators.LOGIN_BUTTON).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.TRANSACTION_TAB).click()
+        self.element_is_visible(self.locators.REFUND_PAYMENTS).click()
+
+    def sort_refund_payments(self):
+        count_before = self.element_is_visible(self.locators.REFUND_COUNT).text
+        self.element_is_visible(self.locators.REFUND_PAYMENTS_SORT).click()
+        select_before = random.randint(1, 3)
+        while select_before != 0:
+            keyboard.send('DOWN')
+            select_before -= 1
+        keyboard.send('ENTER')
+        count_after = self.element_is_visible(self.locators.REFUND_COUNT).text
+        return count_before, count_after
+
+    def test_refund_button(self):
+        time_before = self.element_is_visible(self.locators.REFUND_TIME).text
+        self.element_is_visible(self.locators.REFUND_BUTTON).click()
+        time_after = self.element_is_visible(self.locators.REFUND_TIME).text
+        return time_before, time_after
+
+
+
+

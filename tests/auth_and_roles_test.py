@@ -1,9 +1,9 @@
 import time
-from pages.authorize_and_roles_page import AuthAndRolePage, TransactionSearchPage, TestSecurityManagerPage
+from pages.authorize_and_roles_page import AuthAndRolePage, TransactionSearchPage, TestSecurityManagerPage, \
+    TestActivePaymentsPage, TestRefundPaymentsPage
 
 
 class TestForm:
-
     class TestAuthAndRoles:
 
         def test_auth(self, driver):
@@ -24,7 +24,7 @@ class TestForm:
             transaction_attachment = test_authorization_form.results_attachment()
             assert transaction_result == "['98074', 'EON-AEN4T-L6G5U-GJR7W', " \
                                          "'RAVANA:EON-int=DEPOSITORY:int=ColorCoin=BTC', '0.0001'] ", 'Transaction ' \
-                                                            'value incorrect display in table or search does not work'
+                                                                                                      'value incorrect display in table or search does not work'
             assert transaction_result == transaction_attachment, 'Transaction attachment has not been opened ' \
                                                                  'or value bot correct'
 
@@ -67,4 +67,38 @@ class TestForm:
             date_before, date_after = test_authorization_form.single_approve_security_manager()
             return date_before, date_after
             assert date_before != date_after, 'Single approve button has not been worked or table has not been updated'
+
+    class TestActivityPayments:
+
+        def test_active_sort(self, driver):
+            test_authorization_form = TestActivePaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            count_before, count_after = test_authorization_form.sort_active_payments()
+            assert count_before != count_after, 'Sort active payment has not been worked'
+
+        # def test_active_terminate(self, driver):
+        #     test_authorization_form = TestActivePaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+        #     test_authorization_form.open()
+        #     test_authorization_form.auth_superadmin_int()
+        #     date_before, date_after = test_authorization_form.test_terminate_button()
+        #     print(date_before)
+        #     print(date_after)
+
+    class TestRefundPayments:
+
+        def test_refund_sort(self, driver):
+            test_authorization_form = TestRefundPaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            count_before, count_after = test_authorization_form.sort_refund_payments()
+            assert count_before != count_after, 'Sort refund payment has not been worked'
+
+        def test_refund_button(self, driver):
+            test_authorization_form = TestRefundPaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_authorization_form.open()
+            test_authorization_form.auth_superadmin_int()
+            time_before, time_after = test_authorization_form.test_refund_button()
+            assert time_before != time_after, 'Refund button has not been worked'
+
 
