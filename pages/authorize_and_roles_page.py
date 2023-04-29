@@ -158,21 +158,6 @@ class TestActivePaymentsPage(BasePage):
         count_after = self.element_is_visible(self.locators.ACTIVE_COUNT).text
         return count_before, count_after
 
-    # def test_terminate_button(self):
-    #     self.element_is_present(self.locators.ACTIVE_PAYMENTS_SORT).click()
-    #     keyboard.send('DOWN')
-    #     keyboard.send('ENTER')
-    #     date_before = self.element_is_visible(self.locators.TIME_ACTIVE_TRANSACTION).text
-    #     self.element_is_visible(self.locators.ACTIVE_TRANSACTION).click()
-    #     self.element_is_visible(self.locators.TERMINATE_BUTTON).click()
-    #     self.element_is_visible(self.locators.TERMINATE_RETURN).click()
-    #     self.element_is_present(self.locators.ACTIVE_PAYMENTS_SORT).click()
-    #     keyboard.send('DOWN')
-    #     keyboard.send('ENTER')
-    #     date_after = self.element_is_visible(self.locators.TIME_ACTIVE_TRANSACTION).text
-    #     return date_before,
-    #     pass
-
 
 class TestRefundPaymentsPage(BasePage):
     locators = TestRefundPaymentsPageLocators()

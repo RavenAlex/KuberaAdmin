@@ -44,3 +44,7 @@ class Product:
 @dataclass
 class Type:
     type_name: list = None
+
+@dataclass
+class Kyc:
+    kyc_name: list = None

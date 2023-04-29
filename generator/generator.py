@@ -1,6 +1,6 @@
 import random
 
-from data.data import Person, Color, Date, Value, Select, Product, Type
+from data.data import Person, Color, Date, Value, Select, Product, Type, Kyc
 from faker import Faker
 
 faker_ru = Faker('ru_RU')
@@ -20,5 +20,9 @@ def generated_sort_type():
                    "REGISTRATION_OF_EON_ID", "CURRENCY_EXCHANGE", "VOTE", "COMPLEX"]
     )
 
+def generated_kys_type():
+    yield Kyc(
+        kyc_name=["EMAIL", "FORM", "PERSONAL_PHONE", "HOME_ADDRESS", "IDENTIFICATION_DOCUMENT"]
+    )
 
 
