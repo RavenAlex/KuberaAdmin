@@ -22,3 +22,12 @@ class PersonalAccountPageLocators:
     SEARCH_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__primary__3QLI9 '
                                       'Button__large__W2P3N theme-light"]')
     CITIZENSHIP_COUNTRY = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[3]/div[2]/div')
+    PRODUCT_ID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[4]/div[2]/div')
+    START_DATE_INPUT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div[1]/div[2]/div/div/input')
+    END_DATE_INPUT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div[2]/div[2]/div/div/input')
+    START_DATE_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div[1]/div[2]/div/div')
+    END_DATE_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div[2]/div[2]/div/div')
+    SEARCH_EON_ID_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/form/div[1]')
+    SEARCH_INPUT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/form/div[1]/div/div/input')
+    EON_ID_CLIENT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[5]/table/tbody/a/div/div[1]/div[2]')
+    CLIENT_UUID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/table/tbody/tr[1]/td[2]/div')

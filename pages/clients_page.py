@@ -44,3 +44,45 @@ class PersonalAccountPage(BasePage):
         time.sleep(1)
         count_after = self.element_is_visible(self.locators.COUNT).text
         return count_before, count_after
+
+    def sort_product_id(self):
+        count_before = self.element_is_visible(self.locators.COUNT).text
+        self.element_is_visible(self.locators.PRODUCT_ID).click()
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('ENTER')
+        self.element_is_visible(self.locators.SEARCH_BUTTON).click()
+        time.sleep(1)
+        count_after = self.element_is_visible(self.locators.COUNT).text
+        return count_before, count_after
+
+    def sort_date(self):
+        count_before = self.element_is_visible(self.locators.COUNT).text
+        self.element_is_visible(self.locators.START_DATE_BUTTON).click()
+        start_input = self.element_is_visible(self.locators.START_DATE_INPUT)
+        start_input.send_keys('01.04.2023')
+        self.element_is_visible(self.locators.END_DATE_BUTTON).click()
+        end_input = self.element_is_visible(self.locators.END_DATE_INPUT)
+        end_input.send_keys('10.04.2023')
+        self.element_is_visible(self.locators.CITIZENSHIP_COUNTRY).click()
+        self.element_is_visible(self.locators.SEARCH_BUTTON).click()
+        time.sleep(2)
+        count_after = self.element_is_visible(self.locators.COUNT).text
+        return count_before, count_after
+
+    def search_eon_id(self):
+        self.element_is_visible(self.locators.SEARCH_EON_ID_BUTTON).click()
+        search_eon_id = self.element_is_visible(self.locators.SEARCH_INPUT)
+        search_eon_id.send_keys('EON-2CPWX-LFDWR-239ZW')
+        self.element_is_visible(self.locators.SEARCH_BUTTON).click()
+        time.sleep(3)
+        self.element_is_visible(self.locators.EON_ID_CLIENT).click()
+        time.sleep(1)
+        client_uuid = self.element_is_visible(self.locators.CLIENT_UUID).text
+        return client_uuid
