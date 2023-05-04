@@ -31,3 +31,14 @@ class PersonalAccountPageLocators:
     SEARCH_INPUT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/form/div[1]/div/div/input')
     EON_ID_CLIENT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[5]/table/tbody/a/div/div[1]/div[2]')
     CLIENT_UUID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/table/tbody/tr[1]/td[2]/div')
+    KYC_ORDERS = (By.CSS_SELECTOR, 'a[class="Link__link__3Q0IM theme-light SideNavMenu__link__2IdQq theme-light"]['
+                                   'href="#/clients/orders"]')
+    START_ORDER_DATE_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[1]/div/div/div')
+    END_ORDER_DATE_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[2]/div/div/div')
+    START_ORDER_DATE_INPUT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[1]/div/div/div/input')
+    END_ORDER_DATE_INPUT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[2]/div/div/div/input')
+    GO_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__primary__3QLI9 Button__large__W2P3N '
+                                  'OrdersTable__button__3I6SB theme-light"]')
+    RESULT_ORDER_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[1]/td[1]/div/a')
+    ORDER_ID = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[1]/div[2]')
+    CLOSE_ORDER_BUTTON = (By.XPATH, '/html/body/div[2]/div/div[1]')

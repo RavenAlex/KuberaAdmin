@@ -81,8 +81,25 @@ class PersonalAccountPage(BasePage):
         search_eon_id = self.element_is_visible(self.locators.SEARCH_INPUT)
         search_eon_id.send_keys('EON-2CPWX-LFDWR-239ZW')
         self.element_is_visible(self.locators.SEARCH_BUTTON).click()
-        time.sleep(3)
+        time.sleep(5)
         self.element_is_visible(self.locators.EON_ID_CLIENT).click()
         time.sleep(1)
         client_uuid = self.element_is_visible(self.locators.CLIENT_UUID).text
         return client_uuid
+
+
+    def kyc_orders(self):
+        self.element_is_visible(self.locators.KYC_ORDERS).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.START_ORDER_DATE_BUTTON).click()
+        start_order_input = self.element_is_visible(self.locators.START_ORDER_DATE_INPUT)
+        start_order_input.send_keys('01.04.2023')
+        self.element_is_visible(self.locators.END_ORDER_DATE_BUTTON).click()
+        end_order_input = self.element_is_visible(self.locators.END_ORDER_DATE_INPUT)
+        end_order_input.send_keys('09.04.2023')
+        self.element_is_visible(self.locators.GO_BUTTON).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.RESULT_ORDER_BUTTON).click()
+        order_id = self.element_is_visible(self.locators.ORDER_ID).text
+        self.element_is_visible(self.locators.CLOSE_ORDER_BUTTON).click()
+        return order_id
