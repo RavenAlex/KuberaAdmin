@@ -42,3 +42,13 @@ class PersonalAccountPageLocators:
     RESULT_ORDER_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[1]/td[1]/div/a')
     ORDER_ID = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[1]/div[2]')
     CLOSE_ORDER_BUTTON = (By.XPATH, '/html/body/div[2]/div/div[1]')
+    GET_REPORT_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__primary__3QLI9 '
+                                          'Button__medium__2904Q theme-light"]')
+    REPORT_FROM_DATE_BUTTON = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/div[2]/div/div')
+    REPORT_FROM_DATE = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/div[2]/div/div/input')
+    REPORT_TO_DATE_BUTTON = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[2]/div[2]/div/div')
+    REPORT_TO_DATE = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[2]/div[2]/div/div/input')
+    EMPTY_PLACE = (By.XPATH, '/html/body/div[2]/div/div[2]/h6')
+    REPORT_FINAL_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__primary__3QLI9 '
+                                            'Button__large__W2P3N theme-light"]')
+    RESULT_OF_REPORT = (By.XPATH, '//*[@id="app"]/div[3]/div/span')

@@ -1,3 +1,4 @@
+import os
 import random
 import time
 import keyboard
@@ -103,3 +104,24 @@ class PersonalAccountPage(BasePage):
         order_id = self.element_is_visible(self.locators.ORDER_ID).text
         self.element_is_visible(self.locators.CLOSE_ORDER_BUTTON).click()
         return order_id
+
+
+    def kyc_orders_report(self):
+        self.element_is_visible(self.locators.KYC_ORDERS).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.GET_REPORT_BUTTON).click()
+        self.element_is_visible(self.locators.REPORT_FROM_DATE_BUTTON).click()
+        report_date_from = self.element_is_visible(self.locators.REPORT_FROM_DATE)
+        report_date_from.send_keys('01.04.2023')
+        self.element_is_visible(self.locators.EMPTY_PLACE).click()
+        self.element_is_visible(self.locators.REPORT_TO_DATE_BUTTON).click()
+        report_date_to = self.element_is_visible(self.locators.REPORT_TO_DATE)
+        report_date_to.send_keys('09.04.2023')
+        self.element_is_visible(self.locators.EMPTY_PLACE).click()
+        self.element_is_visible(self.locators.REPORT_FINAL_BUTTON).click()
+        time.sleep(2)
+        result_of_report = self.element_is_visible(self.locators.RESULT_OF_REPORT).text
+        path = '/Users/alexa/Downloads/Kyc_orders_report.zip'
+        os.remove(path)
+        return result_of_report
+

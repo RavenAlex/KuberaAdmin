@@ -59,5 +59,13 @@ class TestClients:
             assert kyc_orders_result == '548e95bb-910a-4924-aced-164025b900b7', 'KYC orders sort by date has not been ' \
                                                                                 'worked '
 
+        def test_kyc_orders_report(self, driver):
+            test_sort_personal = PersonalAccountPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_sort_personal.open()
+            test_sort_personal.auth_superadmin_int()
+            time.sleep(1)
+            result_of_report = test_sort_personal.kyc_orders_report()
+            assert result_of_report == 'Success', 'Report has not been downloaded'
+
 
 
