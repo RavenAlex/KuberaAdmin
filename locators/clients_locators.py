@@ -52,3 +52,14 @@ class PersonalAccountPageLocators:
     REPORT_FINAL_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__primary__3QLI9 '
                                             'Button__large__W2P3N theme-light"]')
     RESULT_OF_REPORT = (By.XPATH, '//*[@id="app"]/div[3]/div/span')
+    ORGANIZATION = (By.CSS_SELECTOR, 'a[href="#/clients/organizations"]')
+    ORGANIZATION_SEARCH = (By.CSS_SELECTOR, 'div[class="theme-light Input__inputContainer__3ik5u '
+                                                   'Input__medium__wJu2O"]')
+    ORGANIZATION_SEARCH_INPUT = (By.CSS_SELECTOR, 'input[class="theme-light Input__input__2H4nT Input__medium__wJu2O '
+                                                  'Input__left__3GNuo"]')
+    ORGANIZATION_SEARCH_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div/form/div[2]/button')
+    ORGANIZATION_SEARCH_CLICK = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div/div/table/tbody/tr/td[2]/div')
+    ORGANIZATION_SEARCH_RESULT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div/div/table/tbody/tr/td['
+                                            '1]/div')
+    ORGANIZATION_SEARCH_UUID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div/table/tbody/tr['
+                                          '1]/td[2]/div/div/div/input')

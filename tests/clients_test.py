@@ -68,4 +68,13 @@ class TestClients:
             assert result_of_report == 'Success', 'Report has not been downloaded'
 
 
+        def test_organisation_main(self, driver):
+            test_sort_personal = PersonalAccountPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_sort_personal.open()
+            test_sort_personal.auth_superadmin_int()
+            time.sleep(1)
+            search_result, result_uuid = test_sort_personal.organisation_main()
+            search_result == result_uuid, 'Search and enter in organization has not been working'
+
+
 

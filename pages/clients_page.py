@@ -125,3 +125,20 @@ class PersonalAccountPage(BasePage):
         os.remove(path)
         return result_of_report
 
+
+    def organisation_main(self):
+        self.element_is_visible(self.locators.ORGANIZATION).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.ORGANIZATION_SEARCH).click()
+        search_input = self.element_is_visible(self.locators.ORGANIZATION_SEARCH_INPUT)
+        search_input.send_keys('Roga i kopita')
+        self.element_is_visible(self.locators.ORGANIZATION_SEARCH_BUTTON).click()
+        time.sleep(2)
+        search_result = self.element_is_visible(self.locators.ORGANIZATION_SEARCH_RESULT).text
+        self.element_is_visible(self.locators.ORGANIZATION_SEARCH_CLICK).click()
+        time.sleep(2)
+        result_uuid = self.element_is_visible(self.locators.ORGANIZATION_SEARCH_UUID).get_attribute('value')
+        return search_result, result_uuid
+
+
+
