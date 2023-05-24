@@ -63,3 +63,12 @@ class PersonalAccountPageLocators:
                                             '1]/div')
     ORGANIZATION_SEARCH_UUID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div/table/tbody/tr['
                                           '1]/td[2]/div/div/div/input')
+    LIST_OF_DETAILS = (By.CSS_SELECTOR, 'a[href="#/clients/list-details"]')
+    ACCOUNT_ID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[2]/div[2]/div[1]/div[2]')
+    ACCOUNT_ID_FIELD = (By.CSS_SELECTOR, 'input[class="theme-light Input__input__2H4nT Input__medium__wJu2O Input__left__3GNuo"]')
+    APPLY_BUTTON = (By.CSS_SELECTOR, 'button[class="Button__button__1O1uA Button__primary__3QLI9 Button__large__W2P3N '
+                                     'theme-light"]')
+    UUID_DETAILS_RESULT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[2]/div[3]/table/tbody/tr[1]/td[1]/div')
+    DETAILS_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[2]/div[3]/table/tbody/tr[1]/td[7]/div/button')
+    TRANSPORT_ID_RESULT_TABLE = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[2]/div[3]/table/tbody/tr[1]/td[2]/div')
+    TRANSPORT_ID_RESULT_DETAILS = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div/table/tbody/tr[3]/td[2]/div')

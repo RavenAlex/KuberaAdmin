@@ -140,5 +140,18 @@ class PersonalAccountPage(BasePage):
         result_uuid = self.element_is_visible(self.locators.ORGANIZATION_SEARCH_UUID).get_attribute('value')
         return search_result, result_uuid
 
+    def list_of_details_sort(self):
+        self.element_is_visible(self.locators.LIST_OF_DETAILS).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.ACCOUNT_ID).click()
+        ac_id_field = self.element_is_visible(self.locators.ACCOUNT_ID_FIELD)
+        ac_id_field.send_keys('EON-PBZER-9YGNB-P46MM')
+        self.element_is_visible(self.locators.APPLY_BUTTON).click()
+        time.sleep(1)
+        result_table = self.element_is_visible(self.locators.TRANSPORT_ID_RESULT_TABLE).text
+        self.element_is_visible(self.locators.DETAILS_BUTTON).click()
+        result_details = self.element_is_visible(self.locators.TRANSPORT_ID_RESULT_DETAILS).text
+        return result_table, result_details
+
 
 

@@ -77,4 +77,13 @@ class TestClients:
             search_result == result_uuid, 'Search and enter in organization has not been working'
 
 
+        def test_list_of_details(self, driver):
+            test_sort_personal = PersonalAccountPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_sort_personal.open()
+            test_sort_personal.auth_superadmin_int()
+            time.sleep(1)
+            result_table, result_detail = test_sort_personal.list_of_details_sort()
+            assert result_table == 'EON-PBZER-9YGNB-P46MM' and result_table == result_detail
+
+
 
