@@ -154,4 +154,21 @@ class PersonalAccountPage(BasePage):
         return result_table, result_details
 
 
+    def list_of_questionnaire(self):
+        self.element_is_visible(self.locators.LIST_OF_QUESTIONNAIRES).click()
+        time.sleep(1)
+        order_id_before = self.element_is_visible(self.locators.ORDER_ID_OF_QUESTIONNAIRES).text
+        self.element_is_visible(self.locators.INFO_BUTTON).click()
+        reject_reasone = self.element_is_present(self.locators.REASON_AREA)
+        self.go_to_element(reject_reasone)
+        reject_reasone.send_keys('test')
+        self.element_is_visible(self.locators.APPROVE_BUTTON).click()
+        time.sleep(1)
+        close_button = self.element_is_visible(self.locators.CLOSE_QUESTIONNAIRE_BUTTON)
+        self.go_to_element(close_button)
+        close_button.click()
+        self.element_is_visible(self.locators.LIST_OF_QUESTIONNAIRES).click()
+        order_id_after = self.element_is_visible(self.locators.ORDER_ID_OF_QUESTIONNAIRES).text
+        return order_id_before, order_id_after
+
 

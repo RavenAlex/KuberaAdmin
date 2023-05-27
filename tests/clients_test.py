@@ -83,7 +83,18 @@ class TestClients:
             test_sort_personal.auth_superadmin_int()
             time.sleep(1)
             result_table, result_detail = test_sort_personal.list_of_details_sort()
-            assert result_table == 'EON-PBZER-9YGNB-P46MM' and result_table == result_detail
+            assert result_table == 'EON-PBZER-9YGNB-P46MM' and result_table == result_detail, 'List of details has ' \
+                                                                                              'not been correct worked '
+
+
+        def test_list_of_questionnaire(self, driver):
+            test_sort_personal = PersonalAccountPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_sort_personal.open()
+            test_sort_personal.auth_superadmin_int()
+            time.sleep(1)
+            order_id_before, order_id_after = test_sort_personal.list_of_questionnaire()
+            assert order_id_before != order_id_after, 'Questionnaire approve has not been worked'
+
 
 
 
