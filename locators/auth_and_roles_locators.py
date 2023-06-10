@@ -107,4 +107,6 @@ class TestRefundPaymentsPageLocators:
     REFUND_COUNT = (By.CSS_SELECTOR, 'div[class="Text__primary__9os-D BBTable__totalCount__3y6A1 theme-light"]')
     REFUND_PAYMENTS_SORT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[1]/div[2]/div')
     REFUND_TIME = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[1]/td[7]/div/a/div')
+    REFUND_AMOUNT_EUR = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[1]/td['
+                                   '6]/div/a/div')
     REFUND_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[1]/td[9]/div/button')

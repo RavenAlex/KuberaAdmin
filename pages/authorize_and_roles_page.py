@@ -1,5 +1,7 @@
 import random
 import time
+
+import allure
 import keyboard
 
 from selenium.webdriver import Keys
@@ -14,12 +16,15 @@ from pages.base_page import BasePage
 class AuthAndRolePage(BasePage):
     locators = AuthAndRolePageLocators()
 
+    @allure.step('Auth superadmin role int')
     def auth_superadmin_role_int(self):
-        self.element_is_visible(self.locators.USER_NAME).send_keys('agureev')
-        self.element_is_visible(self.locators.PASSWORD).send_keys('Clarus007')
-        self.element_is_visible(self.locators.TWOFACTORAUTH).send_keys('123456')
-        self.element_is_visible(self.locators.LOGIN_BUTTON).click()
-        time.sleep(1)
+        with allure.step('filling fields'):
+            self.element_is_visible(self.locators.USER_NAME).send_keys('agureev')
+            self.element_is_visible(self.locators.PASSWORD).send_keys('Clarus007')
+            self.element_is_visible(self.locators.TWOFACTORAUTH).send_keys('123456')
+        with allure.step('click login button'):
+            self.element_is_visible(self.locators.LOGIN_BUTTON).click()
+            time.sleep(1)
         superadmin_menu = self.element_is_present(self.locators.KADM_MENU).text
         return str(superadmin_menu).replace('\n', '')
 
@@ -34,6 +39,7 @@ class TransactionSearchPage(BasePage):
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
         time.sleep(1)
 
+    @allure.step('Search transaction')
     def search_transaction(self):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.SEARCH_FIELD).send_keys('9dda5395-6ff1-48ef-bf15-f55dde2cf71d')
@@ -42,6 +48,7 @@ class TransactionSearchPage(BasePage):
         transaction = self.element_is_present(self.locators.SEARCH_RESULT).text
         return str(transaction.split('\n')[1:-2])
 
+    @allure.step('Result attachment')
     def results_attachment(self):
         self.element_is_visible(self.locators.SEARCH_RESULT).click()
         data = []
@@ -63,6 +70,7 @@ class TestSecurityManagerPage(BasePage):
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
         time.sleep(1)
 
+    @allure.step('Sort security managment product')
     def sort_security_manager_product(self):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.SECURITY_MANAGER).click()
@@ -77,6 +85,7 @@ class TestSecurityManagerPage(BasePage):
         count_after = self.element_is_visible(self.locators.TOTAL_COUNT).text
         return count_before, count_after
 
+    @allure.step('Sort security managment type')
     def sort_security_manager_type(self):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.SECURITY_MANAGER).click()
@@ -91,6 +100,7 @@ class TestSecurityManagerPage(BasePage):
         count_after = self.element_is_visible(self.locators.TOTAL_COUNT).text
         return count_before, count_after
 
+    @allure.step('Reject security manager')
     def reject_security_manager(self):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.SECURITY_MANAGER).click()
@@ -107,6 +117,7 @@ class TestSecurityManagerPage(BasePage):
         date_after = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
         return date_before, date_after
 
+    @allure.step('Approve security manager')
     def approve_security_manager(self):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.SECURITY_MANAGER).click()
@@ -121,6 +132,7 @@ class TestSecurityManagerPage(BasePage):
         date_after = self.element_is_visible(self.locators.DATE_PICKER_IN_LIST).text
         return date_before, date_after
 
+    @allure.step('Single approve security manager')
     def single_approve_security_manager(self):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.SECURITY_MANAGER).click()
@@ -147,6 +159,7 @@ class TestActivePaymentsPage(BasePage):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.ACTIVE_PAYMENTS).click()
 
+    @allure.step('Sort active payments')
     def sort_active_payments(self):
         count_before = self.element_is_visible(self.locators.ACTIVE_COUNT).text
         self.element_is_present(self.locators.ACTIVE_PAYMENTS_SORT).click()
@@ -172,6 +185,7 @@ class TestRefundPaymentsPage(BasePage):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.REFUND_PAYMENTS).click()
 
+    @allure.step('Sort refund payments')
     def sort_refund_payments(self):
         count_before = self.element_is_visible(self.locators.REFUND_COUNT).text
         self.element_is_visible(self.locators.REFUND_PAYMENTS_SORT).click()
@@ -183,11 +197,14 @@ class TestRefundPaymentsPage(BasePage):
         count_after = self.element_is_visible(self.locators.REFUND_COUNT).text
         return count_before, count_after
 
+    @allure.step('Test refund button')
     def test_refund_button(self):
         time_before = self.element_is_visible(self.locators.REFUND_TIME).text
+        amount_before = self.element_is_visible(self.locators.REFUND_AMOUNT_EUR).text
         self.element_is_visible(self.locators.REFUND_BUTTON).click()
         time_after = self.element_is_visible(self.locators.REFUND_TIME).text
-        return time_before, time_after
+        amount_after = self.element_is_visible(self.locators.REFUND_AMOUNT_EUR).text
+        return time_before, amount_before, time_after, amount_after
 
 
 

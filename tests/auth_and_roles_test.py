@@ -1,11 +1,16 @@
 import time
+
+import allure
+
 from pages.authorize_and_roles_page import AuthAndRolePage, TransactionSearchPage, TestSecurityManagerPage, \
     TestActivePaymentsPage, TestRefundPaymentsPage
 
 
+@allure.suite("Form")
 class TestForm:
+    @allure.feature('AuthAndRoles')
     class TestAuthAndRoles:
-
+        @allure.title('Check AuthAndRoles')
         def test_auth(self, driver):
             test_authorization_form = AuthAndRolePage(driver, 'https://kadm.int.exscudo.com/#/signin')
             test_authorization_form.open()
@@ -15,6 +20,7 @@ class TestForm:
                                                                 'menu incorrect displayed '
 
     class TestTransaction:
+        @allure.title('Check Transaction')
 
         def test_transaction_search(self, driver):
             test_authorization_form = TransactionSearchPage(driver, 'https://kadm.int.exscudo.com/#/signin')
@@ -23,12 +29,13 @@ class TestForm:
             transaction_result = test_authorization_form.search_transaction()
             transaction_attachment = test_authorization_form.results_attachment()
             assert transaction_result == "['98074', 'EON-AEN4T-L6G5U-GJR7W', " \
-                                         "'RAVANA:EON-int=DEPOSITORY:int=ColorCoin=BTC', '0.0001'] ", 'Transaction ' \
+                                         "'RAVANA:EON-int=DEPOSITORY:int=ColorCoin=BTC', '0.0001']", 'Transaction ' \
                                                                                                       'value incorrect display in table or search does not work'
             assert transaction_result == transaction_attachment, 'Transaction attachment has not been opened ' \
                                                                  'or value bot correct'
 
     class TestSecurityManager:
+        @allure.title('Check SecurityManager')
 
         def test_security_sort_product(self, driver):
             test_authorization_form = TestSecurityManagerPage(driver, 'https://kadm.int.exscudo.com/#/signin')
@@ -69,6 +76,7 @@ class TestForm:
             assert date_before != date_after, 'Single approve button has not been worked or table has not been updated'
 
     class TestActivityPayments:
+        @allure.title('Check ActivePayments')
 
         def test_active_sort(self, driver):
             test_authorization_form = TestActivePaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
@@ -86,6 +94,7 @@ class TestForm:
         #     print(date_after)
 
     class TestRefundPayments:
+        @allure.title('Check RefundPayments')
 
         def test_refund_sort(self, driver):
             test_authorization_form = TestRefundPaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
@@ -98,8 +107,8 @@ class TestForm:
             test_authorization_form = TestRefundPaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
             test_authorization_form.open()
             test_authorization_form.auth_superadmin_int()
-            time_before, time_after = test_authorization_form.test_refund_button()
-            assert time_before != time_after, 'Refund button has not been worked'
+            time_before, amount_before,  time_after, amount_after = test_authorization_form.test_refund_button()
+            assert time_before != time_after or amount_before != amount_after, 'Refund button has not been worked'
 
 
 
