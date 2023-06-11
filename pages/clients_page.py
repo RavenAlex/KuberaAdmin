@@ -1,6 +1,8 @@
 import os
 import random
 import time
+
+import allure
 import keyboard
 
 from selenium.webdriver import Keys
@@ -13,7 +15,7 @@ from generator.generator import generated_kys_type
 class PersonalAccountPage(BasePage):
     locators = PersonalAccountPageLocators()
 
-
+    @allure.step('Auth superadmin role int')
     def auth_superadmin_int(self):
         self.element_is_visible(self.locators.USER_NAME).send_keys('agureev')
         self.element_is_visible(self.locators.PASSWORD).send_keys('Clarus007')
@@ -22,6 +24,7 @@ class PersonalAccountPage(BasePage):
         time.sleep(1)
         self.element_is_visible(self.locators.CLIENTS_BUTTON).click()
 
+    @allure.step('Sort KYC type')
     def sort_kyc_type(self):
         count_before = self.element_is_visible(self.locators.COUNT).text
         self.element_is_visible(self.locators.KYC_TYPE).click()
@@ -36,6 +39,7 @@ class PersonalAccountPage(BasePage):
         count_after = self.element_is_visible(self.locators.COUNT).text
         return count_before, count_after
 
+    @allure.step('Sort citizenship')
     def sort_citizenship(self):
         count_before = self.element_is_visible(self.locators.COUNT).text
         self.element_is_visible(self.locators.CITIZENSHIP_COUNTRY).click()
@@ -46,6 +50,7 @@ class PersonalAccountPage(BasePage):
         count_after = self.element_is_visible(self.locators.COUNT).text
         return count_before, count_after
 
+    @allure.step('Sort product id')
     def sort_product_id(self):
         count_before = self.element_is_visible(self.locators.COUNT).text
         self.element_is_visible(self.locators.PRODUCT_ID).click()
@@ -63,6 +68,7 @@ class PersonalAccountPage(BasePage):
         count_after = self.element_is_visible(self.locators.COUNT).text
         return count_before, count_after
 
+    @allure.step('Sort date')
     def sort_date(self):
         count_before = self.element_is_visible(self.locators.COUNT).text
         self.element_is_visible(self.locators.START_DATE_BUTTON).click()
@@ -77,18 +83,19 @@ class PersonalAccountPage(BasePage):
         count_after = self.element_is_visible(self.locators.COUNT).text
         return count_before, count_after
 
+    @allure.step('Search EON-ID')
     def search_eon_id(self):
         self.element_is_visible(self.locators.SEARCH_EON_ID_BUTTON).click()
         search_eon_id = self.element_is_visible(self.locators.SEARCH_INPUT)
         search_eon_id.send_keys('EON-2CPWX-LFDWR-239ZW')
         self.element_is_visible(self.locators.SEARCH_BUTTON).click()
-        time.sleep(5)
+        time.sleep(6)
         self.element_is_visible(self.locators.EON_ID_CLIENT).click()
         time.sleep(1)
         client_uuid = self.element_is_visible(self.locators.CLIENT_UUID).text
         return client_uuid
 
-
+    @allure.step('KYC orders')
     def kyc_orders(self):
         self.element_is_visible(self.locators.KYC_ORDERS).click()
         time.sleep(1)
@@ -105,7 +112,7 @@ class PersonalAccountPage(BasePage):
         self.element_is_visible(self.locators.CLOSE_ORDER_BUTTON).click()
         return order_id
 
-
+    @allure.step('KYC orders report')
     def kyc_orders_report(self):
         self.element_is_visible(self.locators.KYC_ORDERS).click()
         time.sleep(1)
@@ -125,7 +132,7 @@ class PersonalAccountPage(BasePage):
         os.remove(path)
         return result_of_report
 
-
+    @allure.step('Organization main')
     def organisation_main(self):
         self.element_is_visible(self.locators.ORGANIZATION).click()
         time.sleep(1)
@@ -140,6 +147,7 @@ class PersonalAccountPage(BasePage):
         result_uuid = self.element_is_visible(self.locators.ORGANIZATION_SEARCH_UUID).get_attribute('value')
         return search_result, result_uuid
 
+    @allure.step('Sort list of details')
     def list_of_details_sort(self):
         self.element_is_visible(self.locators.LIST_OF_DETAILS).click()
         time.sleep(1)
@@ -153,7 +161,7 @@ class PersonalAccountPage(BasePage):
         result_details = self.element_is_visible(self.locators.TRANSPORT_ID_RESULT_DETAILS).text
         return result_table, result_details
 
-
+    @allure.step('Sort list of questionnaire')
     def list_of_questionnaire(self):
         self.element_is_visible(self.locators.LIST_OF_QUESTIONNAIRES).click()
         time.sleep(1)
