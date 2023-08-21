@@ -51,7 +51,7 @@ class TestClients:
             test_sort_personal.auth_superadmin_int()
             time.sleep(1)
             client_uuid = test_sort_personal.search_eon_id()
-            assert client_uuid == '29b27394-ea52-4190-b4dd-93b88db78ebe', 'Search by eon id gas not been worked'
+            assert client_uuid == '29b27394-ea52-4190-b4dd-93b88db78ebe', 'Search by eon-id has not been worked'
 
         @allure.title('Check KYC orders')
         def test_kyc_orders(self, driver):
@@ -87,8 +87,8 @@ class TestClients:
             test_sort_personal.open()
             test_sort_personal.auth_superadmin_int()
             time.sleep(1)
-            result_table, result_detail = test_sort_personal.list_of_details_sort()
-            assert result_table == 'EON-PBZER-9YGNB-P46MM' and result_table == result_detail, 'List of details has ' \
+            result_table, result_table_eon_id, result_detail = test_sort_personal.list_of_details_sort()
+            assert result_table_eon_id == 'EON-PBZER-9YGNB-P46MM' and result_table == result_detail, 'List of details has ' \
                                                                                               'not been correct worked '
 
         @allure.title('Check list of questionnaire')
@@ -99,6 +99,14 @@ class TestClients:
             time.sleep(1)
             order_id_before, order_id_after = test_sort_personal.list_of_questionnaire()
             assert order_id_before != order_id_after, 'Questionnaire approve has not been worked'
+
+
+        def test_country_setting(self, driver):
+            test_sort_personal = PersonalAccountPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_sort_personal.open()
+            test_sort_personal.auth_superadmin_int()
+            time.sleep(1)
+            test_sort_personal.country_setting()
 
 
 

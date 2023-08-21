@@ -157,9 +157,10 @@ class PersonalAccountPage(BasePage):
         self.element_is_visible(self.locators.APPLY_BUTTON).click()
         time.sleep(1)
         result_table = self.element_is_visible(self.locators.TRANSPORT_ID_RESULT_TABLE).text
+        result_table_eon_id = self.element_is_visible(self.locators.ACCOUNT_ID_LIST_OF_DETAILS).text
         self.element_is_visible(self.locators.DETAILS_BUTTON).click()
         result_details = self.element_is_visible(self.locators.TRANSPORT_ID_RESULT_DETAILS).text
-        return result_table, result_details
+        return result_table, result_table_eon_id, result_details
 
     @allure.step('Sort list of questionnaire')
     def list_of_questionnaire(self):
@@ -179,4 +180,18 @@ class PersonalAccountPage(BasePage):
         order_id_after = self.element_is_visible(self.locators.ORDER_ID_OF_QUESTIONNAIRES).text
         return order_id_before, order_id_after
 
+    def country_setting(self):
+        self.element_is_visible(self.locators.COUNTRY_SETTING).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.COUNTRY_SEARCH_FIELD).click()
+        country_search = self.element_is_visible(self.locators.COUNTRY_SEARCH_INPUT)
+        country_search.send_keys('ESTONIA')
+        self.element_is_visible(self.locators.COUNTRY_SEARCH_BUTTON).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.COUNTRY_EDIT).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.COUNTRY_ALLOWED_CHECK_BOX).click()
+        self.element_is_visible(self.locators.COUNTRY_EDIT_SAVE).click()
+        time.sleep(1)
+        self.element_is_visible(self.locators.COUNTRY_EDIT_CLOSE).click()
 
