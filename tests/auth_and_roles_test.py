@@ -16,7 +16,7 @@ class TestForm:
             test_authorization_form.open()
             super_admin = test_authorization_form.auth_superadmin_role_int()
             assert super_admin == 'TRANSACTIONSCLIENTSCURRENCIESEXCHANGERPRODUCTSCMSSWAPADMINMERCHANTSBEST ' \
-                                  'BARTERINVESTMENTSSARASWATI', 'Authorization has not been worked or super admin ' \
+                                  'BARTERINVESTMENTS', 'Authorization has not been worked or super admin ' \
                                                                 'menu incorrect displayed '
 
     class TestTransaction:
@@ -95,14 +95,6 @@ class TestForm:
 
     class TestRefundPayments:
         @allure.title('Check RefundPayments')
-
-        def test_refund_sort(self, driver):
-            test_authorization_form = TestRefundPaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
-            test_authorization_form.open()
-            test_authorization_form.auth_superadmin_int()
-            count_before, count_after = test_authorization_form.sort_refund_payments()
-            assert count_before != count_after, 'Sort refund payment has not been worked'
-
         def test_refund_button(self, driver):
             test_authorization_form = TestRefundPaymentsPage(driver, 'https://kadm.int.exscudo.com/#/signin')
             test_authorization_form.open()

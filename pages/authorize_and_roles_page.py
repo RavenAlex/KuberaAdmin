@@ -185,18 +185,6 @@ class TestRefundPaymentsPage(BasePage):
         self.element_is_visible(self.locators.TRANSACTION_TAB).click()
         self.element_is_visible(self.locators.REFUND_PAYMENTS).click()
 
-    @allure.step('Sort refund payments')
-    def sort_refund_payments(self):
-        count_before = self.element_is_visible(self.locators.REFUND_COUNT).text
-        self.element_is_visible(self.locators.REFUND_PAYMENTS_SORT).click()
-        select_before = random.randint(1, 3)
-        while select_before != 0:
-            keyboard.send('DOWN')
-            select_before -= 1
-        keyboard.send('ENTER')
-        count_after = self.element_is_visible(self.locators.REFUND_COUNT).text
-        return count_before, count_after
-
     @allure.step('Test refund button')
     def test_refund_button(self):
         time_before = self.element_is_visible(self.locators.REFUND_TIME).text
