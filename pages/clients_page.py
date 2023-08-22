@@ -195,3 +195,4 @@ class PersonalAccountPage(BasePage):
         time.sleep(1)
         self.element_is_visible(self.locators.COUNTRY_EDIT_CLOSE).click()
 
+
