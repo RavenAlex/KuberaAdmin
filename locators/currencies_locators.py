@@ -53,4 +53,12 @@ class CurrenciesPageLocators:
     COUNTRY_CHECK_BOX = (By.CSS_SELECTOR, '//*[@id="app"]/div[1]/main/section/div/div[5]/form/div['
                                           '2]/table/tbody/tr/td/div/div/table/tbody/tr[2]/th[1]/div/div/label')
     TRANSPORT_TAB_AFTER = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[2]/div/div[2]/h3/div/a[3]')
+    SYSTEM_CLIENTS_TAB = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[4]/ul/li[2]/a')
+    SYSTEM_CLIENTS_SEARCH = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[1]/div[2]')
+    SYSTEM_CLIENTS_SEARCH_FIELD = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[1]/div[2]/div['
+                                             '1]/input')
+    INDRA_WALLETS_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[2]/div[2]/button[1]')
+    SAVING_WALLETS_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[2]/div[2]/button[2]')
+    UUID_RESULT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[2]/td[2]/div')
+
 

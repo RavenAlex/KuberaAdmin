@@ -34,3 +34,11 @@ class TestCurrencies:
             assert transport_status_before != transport_status_after and withdrawal_constant_fee_before != \
                    withdrawal_constant_fee_after and withdrawal_minimum_amount_before != withdrawal_minimum_amount_after\
                    and deposit_duration_minutes_before != deposit_duration_minutes_after, 'Edit transport has not been worked'
+
+        def test_system_clients_search(self, driver):
+            test_currencies = CurrenciesPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_currencies.open()
+            test_currencies.currencies_button()
+            time.sleep(1)
+            search_result = test_currencies.system_clients_search()
+            assert search_result == 'BEST_BARTER:int', 'System clients search has not been worked'

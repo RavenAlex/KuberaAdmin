@@ -121,3 +121,10 @@ class CurrenciesPage(BasePage):
                 withdrawal_constant_fee_after, withdrawal_minimum_amount_before, withdrawal_minimum_amount_after, \
                 deposit_duration_minutes_before, deposit_duration_minutes_after
 
+    def system_clients_search(self):
+        self.element_is_visible(self.locators.SYSTEM_CLIENTS_TAB).click()
+        self.element_is_visible(self.locators.SYSTEM_CLIENTS_SEARCH).click()
+        self.element_is_visible(self.locators.SYSTEM_CLIENTS_SEARCH_FIELD).send_keys('BEST_BARTER:int')
+        search_result = self.element_is_visible(self.locators.UUID_RESULT).text
+        return search_result
+
