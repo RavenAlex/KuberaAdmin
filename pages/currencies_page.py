@@ -2,10 +2,13 @@ import os
 import random
 import time
 
+import action as action
 import allure
 import keyboard
+from keyboard import mouse
 
-from selenium.webdriver import Keys
+from selenium.webdriver import Keys, ActionChains
+from selenium.webdriver.common.by import By
 
 from locators.currencies_locators import CurrenciesPageLocators
 from pages.base_page import BasePage
@@ -128,3 +131,62 @@ class CurrenciesPage(BasePage):
         search_result = self.element_is_visible(self.locators.UUID_RESULT).text
         return search_result
 
+    def indra_wallets_withdraw(self):
+        self.element_is_visible(self.locators.SYSTEM_CLIENTS_TAB).click()
+        self.element_is_visible(self.locators.INDRA_WALLETS_BUTTON).click()
+        time.sleep(1)
+        indra_wallet_id = self.element_is_visible(self.locators.INDRA_WALLETS_ID).text
+        self.element_is_visible(self.locators.INDRA_TRX_WITHDRAW_BUTTON).click()
+        indra_withdraw_name_currency = self.element_is_visible(self.locators.INDRA_WITHDRAW_CURRENCY_NAME).text
+        self.element_is_visible(self.locators.INDRA_WITHDRAW_CURRENCY_AMOUNT).click()
+        self.element_is_visible(self.locators.INDRA_WITHDRAW_CURRENCY_AMOUNT_FIELD).send_keys('10')
+        self.element_is_visible(self.locators.INDRA_WITHDRAW_BUTTON_SUBMIT).click()
+        indra_withdraw_amount_result = self.element_is_visible(self.locators.INDRA_WITHDRAW_AMOUNT_RESULT).text
+        self.element_is_visible(self.locators.INDRA_WITHDRAW_CONFIRM_BUTTON).click()
+        indra_withdraw_success = self.element_is_visible(self.locators.INDRA_WITHDRAW_SUCCESS).text
+        return indra_wallet_id, indra_withdraw_name_currency, indra_withdraw_amount_result, indra_withdraw_success
+
+    def indra_saving_wallets_withdraw(self):
+        self.element_is_visible(self.locators.SYSTEM_CLIENTS_TAB).click()
+        self.element_is_visible(self.locators.SAVING_WALLETS_BUTTON).click()
+        time.sleep(1)
+        indra_saving_wallet_id = self.element_is_visible(self.locators.INDRA_SAVING_WALLETS_ID).text
+        self.element_is_visible(self.locators.INDRA_SAVING_TRX_WITHDRAW_BUTTON).click()
+        indra_saving_withdraw_name_currency = self.element_is_visible(self.locators.INDRA_SAVING_WITHDRAW_CURRENCY_NAME).text
+        self.element_is_visible(self.locators.INDRA_SAVING_WITHDRAW_CURRENCY_AMOUNT).click()
+        self.element_is_visible(self.locators.INDRA_SAVING_WITHDRAW_CURRENCY_AMOUNT_FIELD).send_keys('1')
+        self.element_is_visible(self.locators.INDRA_SAVING_WITHDRAW_BUTTON_SUBMIT).click()
+        indra_saving_withdraw_amount_result = self.element_is_visible(self.locators.INDRA_SAVING_WITHDRAW_AMOUNT_RESULT).text
+        self.element_is_visible(self.locators.INDRA_SAVING_WITHDRAW_CONFIRM_BUTTON).click()
+        indra_saving_withdraw_success = self.element_is_visible(self.locators.INDRA_SAVING_WITHDRAW_SUCCESS).text
+        return indra_saving_wallet_id, indra_saving_withdraw_name_currency, indra_saving_withdraw_amount_result, \
+               indra_saving_withdraw_success
+
+    def clients_wallets_owner(self):
+        self.element_is_visible(self.locators.CLIENTS_WALLET_TAB).click()
+        self.element_is_visible(self.locators.CLIENTS_WALLET_UUID).click()
+        self.element_is_visible(self.locators.CLIENTS_WALLET_UUID_FIELD).send_keys('fc106c64-1f8e-40b5-bb9f-b336f1ab97f3')
+        time.sleep(2)
+        self.element_is_visible(self.locators.CLIENTS_WALLET_OWNER_BUTTON).click()
+        clients_owner_uuid = self.element_is_visible(self.locators.CLIENTS_WALLET_OWNER_UUID).text
+        print(clients_owner_uuid)
+
+    def ravana_servers(self):
+        self.element_is_visible(self.locators.RAVANA_SERVERS_BUTTON).click()
+        self.element_is_visible(self.locators.RAVANA_UPDATE_BUTTON).click()
+        update_state_check_box = self.element_is_present(self.locators.RAVANA_UPDATE_STATE_CHECK_BOX)
+        action = ActionChains(self.driver)
+        action.move_to_element(update_state_check_box)
+        action.click()
+        action.perform()
+        self.element_is_visible(self.locators.RAVANA_UPDATE_STATE_CHECK_BOX_CONFIRM).click()
+        state = self.element_is_present(self.locators.RAVANA_SERVER_STATE).get_attribute('class')
+        time.sleep(1)
+        self.element_is_visible(self.locators.RAVANA_UPDATE_BUTTON).click()
+        update_state_check_box = self.element_is_present(self.locators.RAVANA_UPDATE_STATE_CHECK_BOX)
+        action = ActionChains(self.driver)
+        action.move_to_element(update_state_check_box)
+        action.click()
+        action.perform()
+        self.element_is_visible(self.locators.RAVANA_UPDATE_STATE_CHECK_BOX_CONFIRM).click()
+        return state

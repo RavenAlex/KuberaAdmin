@@ -60,5 +60,45 @@ class CurrenciesPageLocators:
     INDRA_WALLETS_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[2]/div[2]/button[1]')
     SAVING_WALLETS_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[2]/div[2]/button[2]')
     UUID_RESULT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[2]/td[2]/div')
+    INDRA_WALLETS_ID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div/table/tbody/tr[1]/td[2]/div')
+    INDRA_TRX_WITHDRAW_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div/table/tbody/tr[5]/td['
+                                           '3]/div/button')
+    INDRA_WITHDRAW_CURRENCY_NAME = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/table/tbody/tr/td[1]/div')
+    INDRA_WITHDRAW_CURRENCY_AMOUNT = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/table/tbody/tr/td['
+                                                '3]/div/div[1]/div/div/div')
+    INDRA_WITHDRAW_CURRENCY_AMOUNT_FIELD = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/table/tbody/tr/td['
+                                                      '3]/div/div[1]/div/div/div/div/input')
+    INDRA_WITHDRAW_BUTTON_SUBMIT = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[2]/button')
+    INDRA_WITHDRAW_AMOUNT_RESULT = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/span[2]')
+    INDRA_WITHDRAW_CONFIRM_BUTTON = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[2]/button[2]')
+    INDRA_WITHDRAW_SUCCESS = (By.XPATH, '//*[@id="app"]/div[3]/div/span')
+    INDRA_SAVING_WALLETS_ID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div/table/tbody/tr[1]/td[2]/div')
+    INDRA_SAVING_TRX_WITHDRAW_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div/table/tbody/tr['
+                                                  '4]/td[3]/div/button')
+    INDRA_SAVING_WITHDRAW_CURRENCY_NAME = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/table/tbody/tr/td[1]/div')
+    INDRA_SAVING_WITHDRAW_CURRENCY_AMOUNT = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/table/tbody/tr/td['
+                                                       '3]/div/div[1]/div/div/div')
+    INDRA_SAVING_WITHDRAW_CURRENCY_AMOUNT_FIELD = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div['
+                                                             '1]/table/tbody/tr/td[3]/div/div['
+                                                             '1]/div/div/div/div/input')
+    INDRA_SAVING_WITHDRAW_BUTTON_SUBMIT = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[2]/button')
+    INDRA_SAVING_WITHDRAW_AMOUNT_RESULT = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[1]/span[2]')
+    INDRA_SAVING_WITHDRAW_CONFIRM_BUTTON = (By.XPATH, '/html/body/div[2]/div/div[3]/div/div[2]/button[2]')
+    INDRA_SAVING_WITHDRAW_SUCCESS = (By.XPATH, '//*[@id="app"]/div[3]/div/span')
+    CLIENTS_WALLET_TAB = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[4]/ul/li[3]/a')
+    CLIENTS_WALLET_UUID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[6]/div[2]')
+    CLIENTS_WALLET_UUID_FIELD = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div[6]/div[2]/div/input')
+    CLIENTS_WALLET_OWNER_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr['
+                                             '1]/td[7]/div/button')
+    CLIENTS_WALLET_OWNER_UUID = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/table/tbody/tr[1]/td[2]/div')
+    RAVANA_SERVERS_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[4]/ul/li[4]/a')
+    RAVANA_SERVER_STATE = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[1]/td['
+                                     '4]/div/div/label')
+    RAVANA_UPDATE_BUTTON = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/table/tbody/tr[1]/td[5]/div/button')
+    RAVANA_UPDATE_STATE_CHECK_BOX = (By.XPATH, '//*[@id="Disabled"]')
+    RAVANA_UPDATE_STATE_CHECK_BOX_CONFIRM = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div['
+                                                       '5]/div/table/tbody/tr[10]/td/div/button')
+
+
 
 
