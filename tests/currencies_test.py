@@ -81,6 +81,13 @@ class TestCurrencies:
             assert state == 'Checkbox__checkbox__32K2t Checkbox__small__oZRCx Checkbox__checked__1I3Yq ' \
                             'Checkbox__disabled__30R8E theme-light', 'Ravana servers disabled has not been worked'
 
+        def test_audit_system_balance_update(self, driver):
+            test_currencies = CurrenciesPage(driver, 'https://kadm.int.exscudo.com/#/signin')
+            test_currencies.open()
+            test_currencies.currencies_button()
+            time.sleep(1)
+            test_currencies.audit_system_balance_update()
+
 
 
 

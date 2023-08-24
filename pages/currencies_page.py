@@ -190,3 +190,8 @@ class CurrenciesPage(BasePage):
         action.perform()
         self.element_is_visible(self.locators.RAVANA_UPDATE_STATE_CHECK_BOX_CONFIRM).click()
         return state
+
+    def audit_system_balance_update(self):
+        self.element_is_visible(self.locators.AUDIT_SYSTEM_TAB).click()
+        self.element_is_visible(self.locators.AUDIT_SYSTEM_BALANCE_UPDATE).click()
+        time.sleep(1)

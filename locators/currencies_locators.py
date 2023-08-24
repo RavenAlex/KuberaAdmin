@@ -98,6 +98,8 @@ class CurrenciesPageLocators:
     RAVANA_UPDATE_STATE_CHECK_BOX = (By.XPATH, '//*[@id="Disabled"]')
     RAVANA_UPDATE_STATE_CHECK_BOX_CONFIRM = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div['
                                                        '5]/div/table/tbody/tr[10]/td/div/button')
+    AUDIT_SYSTEM_TAB = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[4]/ul/li[6]/a')
+    AUDIT_SYSTEM_BALANCE_UPDATE = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[4]/ul/li[6]/a')
 
 
 
