@@ -17,6 +17,8 @@ from generator.generator import generated_kys_type
 
 class CurrenciesPage(BasePage):
     locators = CurrenciesPageLocators()
+
+    @allure.step('Currencies tab')
     def currencies_button(self):
         self.element_is_visible(self.locators.USER_NAME).send_keys('agureev')
         self.element_is_visible(self.locators.PASSWORD).send_keys('Clarus007')
@@ -25,12 +27,14 @@ class CurrenciesPage(BasePage):
         time.sleep(1)
         self.element_is_visible(self.locators.CURRENCIES_TAB).click()
 
+    @allure.step('Currency management search')
     def currency_management_search(self):
         self.element_is_visible(self.locators.CURRENCIES_SEARCH).click()
         self.element_is_visible(self.locators.CURRENCIES_SEARCH_FIELD).send_keys('BTC')
         search_result = self.element_is_visible(self.locators.CURRENCIES_SEARCH_RESULT).text
         return search_result
 
+    @allure.step('Disable currencies')
     def disable_currencies(self):
         self.element_is_visible(self.locators.CURRENCIES_SEARCH).click()
         self.element_is_visible(self.locators.CURRENCIES_SEARCH_FIELD).send_keys('BTC')
@@ -60,6 +64,7 @@ class CurrenciesPage(BasePage):
         search_result = self.element_is_visible(self.locators.CURRENCIES_SEARCH_RESULT).text
         return search_result
 
+    @allure.step('Edit transport')
     def edit_transport(self):
         self.element_is_visible(self.locators.CURRENCIES_SEARCH).click()
         self.element_is_visible(self.locators.CURRENCIES_SEARCH_FIELD).send_keys('BTC')
@@ -124,6 +129,7 @@ class CurrenciesPage(BasePage):
                 withdrawal_constant_fee_after, withdrawal_minimum_amount_before, withdrawal_minimum_amount_after, \
                 deposit_duration_minutes_before, deposit_duration_minutes_after
 
+    @allure.step('System clients search')
     def system_clients_search(self):
         self.element_is_visible(self.locators.SYSTEM_CLIENTS_TAB).click()
         self.element_is_visible(self.locators.SYSTEM_CLIENTS_SEARCH).click()
@@ -131,6 +137,7 @@ class CurrenciesPage(BasePage):
         search_result = self.element_is_visible(self.locators.UUID_RESULT).text
         return search_result
 
+    @allure.step('indra wallets withdraw')
     def indra_wallets_withdraw(self):
         self.element_is_visible(self.locators.SYSTEM_CLIENTS_TAB).click()
         self.element_is_visible(self.locators.INDRA_WALLETS_BUTTON).click()
@@ -146,6 +153,7 @@ class CurrenciesPage(BasePage):
         indra_withdraw_success = self.element_is_visible(self.locators.INDRA_WITHDRAW_SUCCESS).text
         return indra_wallet_id, indra_withdraw_name_currency, indra_withdraw_amount_result, indra_withdraw_success
 
+    @allure.step('Indra saving wallets withdraw')
     def indra_saving_wallets_withdraw(self):
         self.element_is_visible(self.locators.SYSTEM_CLIENTS_TAB).click()
         self.element_is_visible(self.locators.SAVING_WALLETS_BUTTON).click()
@@ -162,6 +170,7 @@ class CurrenciesPage(BasePage):
         return indra_saving_wallet_id, indra_saving_withdraw_name_currency, indra_saving_withdraw_amount_result, \
                indra_saving_withdraw_success
 
+    @allure.step('Clients wallets owner')
     def clients_wallets_owner(self):
         self.element_is_visible(self.locators.CLIENTS_WALLET_TAB).click()
         self.element_is_visible(self.locators.CLIENTS_WALLET_UUID).click()
@@ -171,6 +180,7 @@ class CurrenciesPage(BasePage):
         clients_owner_uuid = self.element_is_visible(self.locators.CLIENTS_WALLET_OWNER_UUID).text
         print(clients_owner_uuid)
 
+    @allure.step('Ravana servers')
     def ravana_servers(self):
         self.element_is_visible(self.locators.RAVANA_SERVERS_BUTTON).click()
         self.element_is_visible(self.locators.RAVANA_UPDATE_BUTTON).click()
@@ -191,7 +201,39 @@ class CurrenciesPage(BasePage):
         self.element_is_visible(self.locators.RAVANA_UPDATE_STATE_CHECK_BOX_CONFIRM).click()
         return state
 
+    @allure.step('System balance update')
     def audit_system_balance_update(self):
         self.element_is_visible(self.locators.AUDIT_SYSTEM_TAB).click()
         self.element_is_visible(self.locators.AUDIT_SYSTEM_BALANCE_UPDATE).click()
         time.sleep(1)
+
+    @allure.step('System balance ravana withdraw')
+    def audit_system_balance_ravana_withdraw(self):
+        self.element_is_visible(self.locators.AUDIT_SYSTEM_TAB).click()
+        self.element_is_visible(self.locators.AUDIT_BALANCE_RAVANA).click()
+        self.element_is_visible(self.locators.AUDIT_BALANCE_RAVANA_WITHDRAW).click()
+        self.element_is_visible(self.locators.RECEIVER_RAVANA_ID_FIELD).click()
+        keyboard.send('ENTER')
+        self.element_is_visible(self.locators.AUDIT_BALANCE_RAVANA_WITHDRAW_AMOUNT).click()
+        self.element_is_visible(self.locators.AUDIT_BALANCE_RAVANA_WITHDRAW_AMOUNT_FIELD).send_keys('0.000001')
+        self.element_is_visible(self.locators.AUDIT_BALANCE_RAVANA_WITHDRAW_CONFIRM).click()
+        time.sleep(1)
+        audit_ravana_withdraw_result = self.element_is_visible(self.locators.AUDIT_BALANCE_RAVANA_WITHDRAW_RESULT).text
+        return audit_ravana_withdraw_result
+
+    @allure.step('Audit system allocation funds sort')
+    def audit_system_allocation_funds_sort(self):
+        self.element_is_visible(self.locators.AUDIT_SYSTEM_TAB).click()
+        self.element_is_visible(self.locators.AUDIT_ALLOCATION_FUNDS_TAB).click()
+        self.element_is_visible(self.locators.AUDIT_ALLOCATION_FUNDS_SORT).click()
+        keyboard.send('DOWN')
+        keyboard.send('DOWN')
+        keyboard.send('ENTER')
+        self.element_is_visible(self.locators.AUDIT_ALLOCATION_FUNDS_UPDATE).click()
+        state_one = self.element_is_visible(self.locators.AUDIT_ALLOCATION_FUNDS_STATE).text
+        self.element_is_visible(self.locators.AUDIT_ALLOCATION_FUNDS_SORT).click()
+        keyboard.send('DOWN')
+        keyboard.send('ENTER')
+        self.element_is_visible(self.locators.AUDIT_ALLOCATION_FUNDS_UPDATE).click()
+        state_two = self.element_is_visible(self.locators.AUDIT_ALLOCATION_FUNDS_STATE).text
+        return state_one, state_two

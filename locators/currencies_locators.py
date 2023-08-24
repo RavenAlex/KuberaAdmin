@@ -100,7 +100,19 @@ class CurrenciesPageLocators:
                                                        '5]/div/table/tbody/tr[10]/td/div/button')
     AUDIT_SYSTEM_TAB = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[4]/ul/li[6]/a')
     AUDIT_SYSTEM_BALANCE_UPDATE = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[4]/ul/li[6]/a')
-
-
+    AUDIT_BALANCE_RAVANA = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div/div[2]')
+    AUDIT_BALANCE_RAVANA_WITHDRAW = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[3]/table/tbody/tr['
+                                               '4]/td[7]/div/button')
+    RECEIVER_RAVANA_ID_FIELD = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div/table/tbody/tr[3]/td[2]/div/div/div')
+    AUDIT_BALANCE_RAVANA_WITHDRAW_AMOUNT = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div/table/tbody/tr[4]/td[2]/div/div')
+    AUDIT_BALANCE_RAVANA_WITHDRAW_AMOUNT_FIELD = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div/table/tbody/tr['
+                                                            '4]/td[2]/div/div/div/input')
+    AUDIT_BALANCE_RAVANA_WITHDRAW_CONFIRM = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div/table/tbody/tr[5]/td/div/button')
+    AUDIT_BALANCE_RAVANA_WITHDRAW_RESULT = (By.XPATH, '//*[@id="app"]/div[3]/div/span')
+    AUDIT_ALLOCATION_FUNDS_TAB = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[1]/div/div[3]')
+    AUDIT_ALLOCATION_FUNDS_SORT = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div[1]/div/div')
+    AUDIT_ALLOCATION_FUNDS_UPDATE = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[2]/div[2]/button')
+    AUDIT_ALLOCATION_FUNDS_STATE = (By.XPATH, '//*[@id="app"]/div[1]/main/section/div/div[5]/div[3]/table/tbody/tr['
+                                              '1]/td[5]/div')
 
 
