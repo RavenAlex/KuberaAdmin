@@ -100,7 +100,7 @@ class TestClients:
             order_id_before, order_id_after = test_sort_personal.list_of_questionnaire()
             assert order_id_before != order_id_after, 'Questionnaire approve has not been worked'
 
-
+        @allure.title('Check country setting')
         def test_country_setting(self, driver):
             test_sort_personal = PersonalAccountPage(driver, 'https://kadm.int.exscudo.com/#/signin')
             test_sort_personal.open()

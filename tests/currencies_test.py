@@ -75,7 +75,7 @@ class TestCurrencies:
                     'Indra saving withdraw has not been worked'
 
     @allure.feature('ClientsWallets')
-    class TestSystemClients:
+    class TestClientsWallets:
         @allure.title('Check clients wallets owner')
         def test_clients_wallets_owner(self, driver):
             test_currencies = CurrenciesPage(driver, 'https://kadm.int.exscudo.com/#/signin')
@@ -85,7 +85,7 @@ class TestCurrencies:
             test_currencies.clients_wallets_owner()
 
     @allure.feature('RavanaServers')
-    class TestSystemClients:
+    class TestRavanaServers:
         @allure.title('Check disable ravana server')
         def test_ravana_server(self, driver):
             test_currencies = CurrenciesPage(driver, 'https://kadm.int.exscudo.com/#/signin')
@@ -97,7 +97,7 @@ class TestCurrencies:
                             'theme-light', 'Ravana servers disabled has not been worked'
 
     @allure.feature('AuditSystem')
-    class TestSystemClients:
+    class TestAuditSystem:
         @allure.title('Check audit system balance update')
         def test_audit_system_balance_update(self, driver):
             test_currencies = CurrenciesPage(driver, 'https://kadm.int.exscudo.com/#/signin')
